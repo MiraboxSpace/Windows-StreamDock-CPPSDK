@@ -18,28 +18,29 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/hal/interface.h>
 #include <filesystem>
 
 //using namespace cv;
 
-
+// #include "png.h"
 class streamDock293 :public streamDock
 {
 private:
 
 public:
 
-    streamDock293(tranSport *transport,struct hid_device_info *devInfo);
+    streamDock293(tranSport* transport, struct hid_device_info* devInfo);
     ~streamDock293();
 
- 
+
 
     /*
         @note:获取设备的固件版本
         @param lenth ：固件版本的长度
         @return 返回固件版本的版本号存放数组的首地址，如果出错返回空
     */
-    unsigned char *getFirmVersion(int lenth );
+    unsigned char* getFirmVersion(int lenth);
 
     /*
         @note:设置设备屏幕的亮度,如果传入的值小于0，值会被拉回0，如果大于100会被回100
@@ -56,22 +57,23 @@ public:
     int setBackgroundImg(std::string path);
 
 
-     /*
-        @note:接受设备发送的信息
-        @return 成功返回获得的数组首地址，如果出错返回NULL
-    */
-    unsigned char * read();
-     /*
-        @note:设置设备按键的图标
-        @param path ：图片的路径
-        @return 成功返回1，如果出错返回-1
-    */
-    int setKeyImg(std::string path,int key);
     /*
-        @note:设置设备屏幕的背景图片
+       @note:接受设备发送的信息
+       @return 成功返回获得的数组首地址，如果出错返回NULL
+   */
+    unsigned char* read();
+    /*
+       @note:设置设备按键的图标
+       @param path ：图片的路径
+       @return 成功返回1，如果出错返回-1
+   */
+    int setKeyImg(std::string path, int key);
+    /*
+        @note:设置设备屏幕的按键图片
         @param path ：存放图片数据的数组
         @return 成功返回1，如果出错返回-1
     */
+    int setKeyImgData(unsigned char* imagedata, int width, int height, int key);
 };
 
 

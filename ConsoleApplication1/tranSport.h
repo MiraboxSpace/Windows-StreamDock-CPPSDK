@@ -29,9 +29,11 @@ public:
     //设置设备屏幕亮度 1-100
     int setBrightness(int percent);
     //设置设备屏幕的背景图
-    int setBackgroundImg(unsigned char *buffer);
+    int setBackgroundImg(unsigned char *buffer,int size);
     //设置设备某个按键的图标
     int setKeyImg(std::string path,int key);
+    //设置设备某个按键的图标,通过传数据
+    int setKeyImgdata(unsigned char* buffer, int key, int width, int height);
     //清空某个按键的图标 1-15
     int keyClear(int i);
     //清空所有按键的图标

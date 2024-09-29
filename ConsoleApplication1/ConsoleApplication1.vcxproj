@@ -99,6 +99,10 @@
     <IncludePath>D:\OpenCV\opencv\build\include;D:\OpenCV\opencv\build\include\opencv2;D:\OpenCV\opencv\build\include\opencv;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Users\OptiPlex\Desktop\ConsoleApplication1%281%29\ConsoleApplication1\transport;D:\OpenCV\opencv\build\x64\vc14\lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\opencv\opencv\build\include;C:\opencv\opencv\build\include\opencv;C:\opencv\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\opencv\opencv\build\x64\vc14\lib;C:\opencv\opencv\build\x64\vc15\lib;C:\Users\Dell\Desktop\Windows下的c++sdk添加keyimagedata接口\Windows-StreamDock-CPPSDK\ConsoleApplication1\transport;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -155,6 +159,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>transport.lib;opencv_world346d.lib;opencv_world346.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

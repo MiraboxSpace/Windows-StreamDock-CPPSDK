@@ -44,6 +44,14 @@ public:
 	@return 成功返回1，如果出错返回-1
 	*/
 	virtual int setKeyImg(std::string path, int key);
+
+	/*
+	@note:设置设备按键的图标
+	@param imagedata ：图片像素数据数组
+	@return 成功返回1，如果出错返回-1
+	*/
+	virtual int setKeyImgData(unsigned char* imagedata, int width, int height, int key);
+
 	/*
 	@note:清空按键图标
 	@param index:按键的标号
@@ -66,8 +74,6 @@ public:
 	int refresh();
 
 
-	static std::string getFileExtension(const std::string& fileName);
-
 
 	tranSport* transport;
 private:
@@ -79,8 +85,7 @@ private:
 	unsigned short product_id;
 	/** Serial Number */
 	wchar_t* serial_number;
-	/** Device Release Number in binary-coded decimal,
-		also known as Device Version Number */
+	/** Device Release Number in binary-coded decimal,also known as Device Version Number */
 	unsigned short release_number;
 	/** Manufacturer String */
 	wchar_t* manufacturer_string;
