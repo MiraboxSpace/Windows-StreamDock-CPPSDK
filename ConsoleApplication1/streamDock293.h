@@ -37,7 +37,7 @@ public:
 
     /*
         @note:获取设备的固件版本
-        @param lenth ：固件版本的长度
+        @param lenth ：固件版本的长度 
         @return 返回固件版本的版本号存放数组的首地址，如果出错返回空
     */
     unsigned char* getFirmVersion(int lenth);
@@ -58,7 +58,7 @@ public:
 
 
     /*
-       @note:接受设备发送的信息
+       @note:接受设备发送的信息 数据传送成功时会返回ack ok ,当设备连接激活时，按下按键会返回一个unsigned char数组，下标为9的字节为按键编号，下标为10的字节存放按键状态0x00抬起，0x01按下
        @return 成功返回获得的数组首地址，如果出错返回NULL
    */
     unsigned char* read();
