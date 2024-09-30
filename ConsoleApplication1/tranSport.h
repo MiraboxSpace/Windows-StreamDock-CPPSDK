@@ -14,37 +14,37 @@ private:
     hid_device *handle;
 public:
     tranSport();
-    //´ò¿ªÉè±¸£¬Ê¹ÓÃÉè±¸Â·¾¶´ò¿ª
+    //æ‰“å¼€è®¾å¤‡ï¼Œä½¿ç”¨è®¾å¤‡è·¯å¾„æ‰“å¼€
     int open(char *path);
-    //»ñÈ¡Éè±¸µÄ¹Ì¼şid
+    //è·å–è®¾å¤‡çš„å›ºä»¶id
     unsigned char *getInputReport(int lenth);
-    //¶ÁÈ¡Éè±¸µÄ·´À¡ĞÅÏ¢
+    //è¯»å–è®¾å¤‡çš„åé¦ˆä¿¡æ¯ éœ€è¦ä¼ å…¥ä¸€ä¸ªunsigned char æ•°ç»„ï¼Œè‹¥æˆåŠŸå†™å…¥æ•°æ®æ•°ç»„ä¼šè¢«èµ‹å€¼ack okï¼Œè‹¥è®¾å¤‡è¢«å¯åŠ¨ï¼ŒæŒ‰ä¸‹æŒ‰é”®ï¼Œä¸‹æ ‡ä¸º9çš„å­—èŠ‚ä¸­å­˜æ”¾æŒ‰é”®æ ‡å·ï¼Œä¸‹æ ‡ä¸º10çš„å­—èŠ‚ä¸­å­˜æ”¾æŒ‰é”®çŠ¶æ€ï¼Œ0x00æŒ‰é”®æŠ¬èµ·ï¼Œ0x01æŒ‰é”®æŒ‰ä¸‹
     int read(unsigned char *data,unsigned long lenth);
-    //ÏòÉè±¸ÏÂ·¢ĞÅÏ¢
+    //å‘è®¾å¤‡ä¸‹å‘ä¿¡æ¯
     int write(unsigned char *data,unsigned long lenth);
-    //½«enumerate·µ»ØµÄÉè±¸ĞÅÏ¢ÁĞ±íÏú»Ù
+    //å°†enumerateè¿”å›çš„è®¾å¤‡ä¿¡æ¯åˆ—è¡¨é”€æ¯
     void freeEnumerate(hid_device_info *devs);
-    //»ñÈ¡Éè±¸ĞÅÏ¢ÁĞ±í
+    //è·å–è®¾å¤‡ä¿¡æ¯åˆ—è¡¨
     hid_device_info *enumerate(int vid, int pid);
-    //ÉèÖÃÉè±¸ÆÁÄ»ÁÁ¶È 1-100
+    //è®¾ç½®è®¾å¤‡å±å¹•äº®åº¦ 1-100
     int setBrightness(int percent);
-    //ÉèÖÃÉè±¸ÆÁÄ»µÄ±³¾°Í¼
+    //è®¾ç½®è®¾å¤‡å±å¹•çš„èƒŒæ™¯å›¾ï¼Œbufferï¼šæ”¾æœ‰BGRæ•°æ®çš„unsigned charæ•°ç»„åœ°å€ï¼Œsizeï¼šæ•°ç»„å¤§å°
     int setBackgroundImg(unsigned char *buffer,int size);
-    //ÉèÖÃÉè±¸Ä³¸ö°´¼üµÄÍ¼±ê
+    //è®¾ç½®è®¾å¤‡æŸä¸ªæŒ‰é”®çš„å›¾æ ‡
     int setKeyImg(std::string path,int key);
-    //ÉèÖÃÉè±¸Ä³¸ö°´¼üµÄÍ¼±ê,Í¨¹ı´«Êı¾İ
+    //è®¾ç½®è®¾å¤‡æŸä¸ªæŒ‰é”®çš„å›¾æ ‡,é€šè¿‡ä¼ æ•°æ®
     int setKeyImgdata(unsigned char* buffer, int key, int width, int height);
-    //Çå¿ÕÄ³¸ö°´¼üµÄÍ¼±ê 1-15
+    //æ¸…ç©ºæŸä¸ªæŒ‰é”®çš„å›¾æ ‡ 1-15
     int keyClear(int i);
-    //Çå¿ÕËùÓĞ°´¼üµÄÍ¼±ê
+    //æ¸…ç©ºæ‰€æœ‰æŒ‰é”®çš„å›¾æ ‡
     int keyAllClear();
-    //»½ĞÑÆÁÄ»
+    //å”¤é†’å±å¹•
     int wakeScreen();
-    //ÔÚÊı¾İ´«ÊäÍê³Éºó¿ÉÒÔÓÃÕâ¸öË¢ĞÂÏÔÊ¾
+    //åœ¨æ•°æ®ä¼ è¾“å®Œæˆåå¯ä»¥ç”¨è¿™ä¸ªåˆ·æ–°æ˜¾ç¤º
     int refresh();
-    //¶Ï¿ªÁ¬½Ó
+    //æ–­å¼€è¿æ¥
     int disconnected();
-    //¹Ø±ÕÉè±¸
+    //å…³é—­è®¾å¤‡
     void close();
 };
 #endif
