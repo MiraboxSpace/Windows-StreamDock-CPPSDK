@@ -14,37 +14,105 @@ private:
     hid_device *handle;
 public:
     tranSport();
-    //打开设备，使用设备路径打开
+    /*
+        @note:打开设备，使用设备路径打开
+        @param path ：图片的路径
+        @return 成功返回1，如果出错返回-1
+    */
     int open(char *path);
-    //获取设备的固件id
+     /*
+        @note:获取设备的固件id
+        @param lenth ：固件号长度（默认写512）
+        @return 成功返回1，如果出错返回-1
+    */
     unsigned char *getInputReport(int lenth);
-    //读取设备的反馈信息 需要传入一个unsigned char 数组，若成功写入数据数组会被赋值ack ok，若设备被启动，按下按键，下标为9的字节中存放按键标号，下标为10的字节中存放按键状态，0x00按键抬起，0x01按键按下
+     /*
+        @note:读取设备的反馈信息 data[0] - data[2] :ack data[3]-data[4] :0x00  data[5]-data[6]: ok data[7]-data[8]:0x00
+        当设备启动后按键触发时：data[9]:被触发按键的标号 data[10]: 按键抬起时0x00 按下时0x01  
+        @param data ：用来接受反馈信息的unsigned char 数组
+        @param lenth ：数组长度
+        @return 成功返回1，如果出错返回-1
+    */
     int read(unsigned char *data,unsigned long lenth);
-    //向设备下发信息，data:装有数据的unsigned char数组，lenth：数组长度
+    /*
+        @note:向设备下发信息
+        @param data:装有数据的unsigned char数组
+        @param lenth：数组长度
+        @return 成功返回1，如果出错返回-1
+    */
     int write(unsigned char *data,unsigned long lenth);
-    //将enumerate返回的设备信息列表销毁
-    void freeEnumerate(hid_device_info *devs);
-    //获取设备信息列表，vid：设备vid  pid：设备vid
+    /*
+        @note:将enumerate返回的设备信息列表销毁
+        @param devs ：装有设备信息的链表
+        @return 成功返回1，如果出错返回-1
+    */
+    void freeEnumerate(hid_device_info *devs);  
+     /*
+        @note:获取设备信息列表
+        @param vid：设备vid
+        @param pid：设备pid
+        @return 成功返回1，如果出错返回-1
+    */
     hid_device_info *enumerate(int vid, int pid);
-    //设置设备屏幕亮度 1-100
+    /*
+        @note:设置设备屏幕亮度 0-100
+        @param percent ：亮度 0-100
+        @return 成功返回1，如果出错返回-1
+    */
     int setBrightness(int percent);
-    //设置设备屏幕的背景图，buffer：放有BGR数据的unsigned char数组地址，size：数组大小
+    /*
+        @note:设置设备屏幕的背景图
+        @param buffer：放有BGR数据的unsigned char数组地址
+        @param size：数组大小
+        @return 成功返回1，如果出错返回-1
+    */
     int setBackgroundImg(unsigned char *buffer,int size);
-    //设置设备某个按键的图标，path：图片路径，key：按键标号
+     /*
+        @note:设置设备某个按键的图标
+        @param path：图片路径
+        @param key：按键标号
+        @return 成功返回1，如果出错返回-1
+    */
     int setKeyImg(std::string path,int key);
-    //设置设备某个按键的图标,buffer，装有图片信息的unsigned char 数组，key：按键标号 width： 图片长度 height：图片高度
+    /*
+        @note:设置设备某个按键的图标
+        @param buffer，装有图片信息的unsigned char 数组
+        @param key：按键标号
+        @param width： 图片长度
+        @param height：图片高度
+        @return 成功返回1，如果出错返回-1
+    */
     int setKeyImgdata(unsigned char* buffer, int key, int width, int height);
-    //清空某个按键的图标 1-15
-    int keyClear(int i);
-    //清空所有按键的图标
+    /*
+        @note:清空某个按键的图标
+        @param index ：按键标号（1-15）
+        @return 成功返回1，如果出错返回-1
+    */
+    int keyClear(int index);
+    /*
+        @note:清空所有按键的图标
+        @return 成功返回1，如果出错返回-1
+    */
     int keyAllClear();
-    //唤醒屏幕
+    /*
+        @note:唤醒屏幕
+        @return 成功返回1，如果出错返回-1
+    */
     int wakeScreen();
-    //在数据传输完成后可以用这个刷新显示
+    /*
+        @note:在数据传输完成后可以用这个刷新显示
+        @return 成功返回1，如果出错返回-1
+    */
     int refresh();
-    //断开连接
+     /*
+        @note:断开连接
+        @return 成功返回1，如果出错返回-1
+    */
     int disconnected();
-    //关闭设备
+    /*
+        @note:关闭设备
+        @return 成功返回1，如果出错返回-1
+    */
     void close();
 };
 #endif
