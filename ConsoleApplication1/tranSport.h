@@ -27,8 +27,29 @@ public:
     */
     unsigned char *getInputReport(int lenth);
      /*
-        @note:读取设备的反馈信息 data[0] - data[2] :ack data[3]-data[4] :0x00  data[5]-data[6]: ok data[7]-data[8]:0x00
-        当设备启动后按键触发时：data[9]:被触发按键的标号 data[10]: 按键抬起时0x00 按下时0x01  
+        @note:读取设备的反馈信息 
+        按键事件
+        byte            内容        值         描述
+        data[0]     回复的格式      0x41-A     
+        data[1]     回复的格式      0x43-C  
+        data[2]     回复的格式      0x4B-K  
+        data[3-4]       预留
+        data[5]     回复的格式      0x4F-O  
+        data[6]     回复的格式      0x4B-K
+        data[7-8]       预留
+        data[9]     按键下标        0x01-0x0F
+        data[10]     按键事件       0x00-0x01  0x00 按键抬起，0x01按键按下  
+        
+        应答消息  
+        data[0]     回复的格式      0x41-A     
+        data[1]     回复的格式      0x43-C  
+        data[2]     回复的格式      0x4B-K  
+        data[3-4]       预留
+        data[5]     回复的格式      0x4F-O  
+        data[6]     回复的格式      0x4B-K
+        data[7-8]       预留
+        data[9]     表示应答        0x00
+        data[10-13]     预留  
         @param data ：用来接受反馈信息的unsigned char 数组
         @param lenth ：数组长度
         @return 成功返回1，如果出错返回-1
