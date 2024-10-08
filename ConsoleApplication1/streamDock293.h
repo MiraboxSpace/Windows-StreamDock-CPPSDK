@@ -56,6 +56,12 @@ public:
     */
     int setBackgroundImg(std::string path);
 
+    /*
+       @note:设置设备屏幕的背景图片
+       @param path ：图片的路径
+       @return 成功返回1，如果出错返回-1
+   */
+    int setBackgroundImgData(std::vector<unsigned char>buffer, int width, int height);
 
     /*
        @note:接受设备发送的信息 数据传送成功时会返回ack ok ,当设备连接激活时，按下按键会返回一个unsigned char数组，下标为9的字节为按键编号，下标为10的字节存放按键状态0x00抬起，0x01按下
