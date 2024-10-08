@@ -4,6 +4,7 @@
 #include "tranSport.h"
 #include "hidapi.h"
 #include <algorithm>
+#include <vector>
 class streamDock {
 
 public:
@@ -32,6 +33,15 @@ public:
 	@return 成功返回1，如果出错返回-1
 	*/
 	virtual int setBackgroundImg(std::string path);
+
+	/*
+	@note:设置设备屏幕的背景图片
+	@param buffer ：存有RGB数据的vector容器
+	@param width ：图片的宽
+	@param buffer ：图片的高
+	@return 成功返回1，如果出错返回-1
+	*/
+	virtual int setBackgroundImgData(std::vector<unsigned char>buffer, int width, int height);
 
 	/*
 	@note:接受设备发送的信息
