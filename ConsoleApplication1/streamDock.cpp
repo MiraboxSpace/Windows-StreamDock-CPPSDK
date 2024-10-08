@@ -45,7 +45,10 @@ int streamDock::setBackgroundImg(std::string path)
     return 0;
 }
 
-
+int streamDock::setBackgroundImgData(std::vector<unsigned char>buffer, int width, int height)
+{
+    return 0;
+}
 
 unsigned char* streamDock::read()
 {
