@@ -38,7 +38,7 @@ public:
 	@note:设置设备屏幕的背景图片
 	@param buffer ：存有RGB数据的vector容器
 	@param width ：图片的宽
-	@param buffer ：图片的高
+	@param height ：图片的高
 	@return 成功返回1，如果出错返回-1
 	*/
 	virtual int setBackgroundImgData(std::vector<unsigned char>buffer, int width, int height);
