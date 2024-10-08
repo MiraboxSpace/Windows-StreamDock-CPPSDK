@@ -43,7 +43,9 @@ int streamDock293::setBackgroundImg(std::string path)
 
 }
 
-
+int streamDock293::setBackgroundImgData(std::vector<unsigned char>buffer, int width, int height) {
+    return this->transport->setBackgroundImg(buffer.data(), width * height * 3);
+}
 
 
 unsigned char* streamDock293::read()
